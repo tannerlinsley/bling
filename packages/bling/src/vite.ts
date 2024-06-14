@@ -79,7 +79,8 @@ export function bling(opts?: { babel?: Options['babel'] }): Plugin {
       }
 
       if (
-        code.includes('fetch$(' || code.includes('split$(')) ||
+        code.includes('fetch$(') ||
+        code.includes('split$(') ||
         code.includes('server$(')
       ) {
         const compiled = await compileFile({

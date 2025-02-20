@@ -78,10 +78,7 @@ export function bling(opts?: { babel?: Options['babel'] }): Plugin {
         return compiled.code
       }
 
-      if (
-        code.includes('fetch$(' || code.includes('split$(')) ||
-        code.includes('server$(')
-      ) {
+      if (/(?:fetch|split|server)\$\(/.test(code)) {
         const compiled = await compileFile({
           code,
           viteCompile,
